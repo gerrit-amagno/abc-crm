@@ -13,7 +13,6 @@
 */
 
 using Abc.Crm.WindowsClient.Services;
-using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 
 namespace Abc.Crm.WindowsClient.ViewModel
@@ -29,8 +28,6 @@ namespace Abc.Crm.WindowsClient.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
             //SimpleIoc.Default.Register<ICustomerDocumentRepository, DemoCustomerDocumentRepository>();
             SimpleIoc.Default.Register<ICustomerDocumentRepository, CustomerDocumentRepository>();
             //SimpleIoc.Default.Register<ICustomerDocumentRepository, AmagnoDocumentRepository>();
@@ -42,7 +39,7 @@ namespace Abc.Crm.WindowsClient.ViewModel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return SimpleIoc.Default.GetInstance<MainViewModel>();
             }
         }
         

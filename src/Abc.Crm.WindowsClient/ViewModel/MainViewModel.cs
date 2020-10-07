@@ -3,8 +3,6 @@ using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Abc.Crm.WindowsClient.Services;
-using GalaSoft.MvvmLight.CommandWpf;
-using Microsoft.Win32;
 using System.IO;
 
 namespace Abc.Crm.WindowsClient.ViewModel
