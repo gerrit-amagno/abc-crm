@@ -2,8 +2,9 @@ using Abc.Crm.WindowsClient.Models;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Abc.Crm.WindowsClient.Services;
 using System.IO;
+using Abc.Crm.WindowsClient.Interface;
+using Abc.Crm.WindowsClient.Properties;
 
 namespace Abc.Crm.WindowsClient.ViewModel
 {
@@ -41,6 +42,11 @@ namespace Abc.Crm.WindowsClient.ViewModel
         {
             _documentRepository = documentRepository;
 
+            Init();
+        }
+
+        private void Init()
+        {
             SelectedCustomer = new Customer
             {
                 Address = "Citykai 12",
@@ -49,7 +55,7 @@ namespace Abc.Crm.WindowsClient.ViewModel
                 Name = "Clean Power AG",
                 Number = "SLKD1003",
                 Postcode = "20457",
-                Logo = File.ReadAllBytes(@"D:\Alle\Abc.Crm\Abc.Crm.WindowsClient\resources\cleanpower-logo.png")
+                Logo = File.ReadAllBytes(@"images\cleanpower-logo.png")
             };
 
             DocumentList = new ObservableCollection<CustomerDocument>(_documentRepository.GetAll());

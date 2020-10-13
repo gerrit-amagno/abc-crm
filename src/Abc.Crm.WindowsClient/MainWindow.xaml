@@ -69,7 +69,7 @@
                         <Label Content="Name" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="72"/>
                         <Label Content="Erstellt" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="72" Grid.Row="1"  Grid.Column="0"/>
                         <Label Content="{Binding SelectedDocument.Name}" Grid.Row="0" Grid.Column="1" Margin="10,9,10,0" VerticalAlignment="Top" Height="31"/>
-                        <Label Content="{Binding SelectedDocument.Created}" Grid.Column="1" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="26"/>
+                        <Label Content="{Binding SelectedDocument.CreateDate}" Grid.Column="1" Margin="10,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="26"/>
                         <Label Content="Nummer" HorizontalAlignment="Left" Margin="10,9,0,0" VerticalAlignment="Top" Width="72" Grid.Row="2" />
                         <Label Content="Datum" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="72" Grid.Row="3"  Grid.Column="0"/>
                         <Label Content="{Binding SelectedDocument.No}" Grid.Row="2" Grid.Column="1" Margin="10,9,10,0" VerticalAlignment="Top" Height="31"/>

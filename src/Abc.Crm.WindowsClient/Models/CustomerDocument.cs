@@ -13,8 +13,7 @@ namespace Abc.Crm.WindowsClient.Models
 
         public string Name { get; set; }
 
-        [DeserializeAs(Name = "CreateDate" )]
-        public string Created { get; set; }
+        public string CreateDate { get; set; }
 
         public byte[] Preview { get; set; }
 

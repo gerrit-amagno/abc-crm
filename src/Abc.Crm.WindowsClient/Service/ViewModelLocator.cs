@@ -12,10 +12,12 @@
   See http://www.galasoft.ch/mvvm
 */
 
-using Abc.Crm.WindowsClient.Services;
+using Abc.Crm.WindowsClient.Interface;
+using Abc.Crm.WindowsClient.Repository;
+using Abc.Crm.WindowsClient.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace Abc.Crm.WindowsClient.ViewModel
+namespace Abc.Crm.WindowsClient.Service
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -28,9 +30,8 @@ namespace Abc.Crm.WindowsClient.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            //SimpleIoc.Default.Register<ICustomerDocumentRepository, DemoCustomerDocumentRepository>();
-            SimpleIoc.Default.Register<ICustomerDocumentRepository, CustomerDocumentRepository>();
-            //SimpleIoc.Default.Register<ICustomerDocumentRepository, AmagnoDocumentRepository>();
+            SimpleIoc.Default.Register<ICustomerDocumentRepository, DemoCustomerDocumentRepository>();
+            //SimpleIoc.Default.Register<ICustomerDocumentRepository, RestSharpCustomerDocumentRepository>();
 
             SimpleIoc.Default.Register<MainViewModel>();
         }
@@ -41,11 +42,6 @@ namespace Abc.Crm.WindowsClient.ViewModel
             {
                 return SimpleIoc.Default.GetInstance<MainViewModel>();
             }
-        }
-        
-        public static void Cleanup()
-        {
-            // TODO Clear the ViewModels
         }
     }
 }

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abc.Crm.WindowsClient.Interface;
 using Abc.Crm.WindowsClient.Models;
 using RestSharp;
 using RestSharp.Authenticators;
 using DataFormat = RestSharp.DataFormat;
 
-namespace Abc.Crm.WindowsClient.Services
+namespace Abc.Crm.WindowsClient.Repository
 {
-    public class CustomerDocumentRepository : ICustomerDocumentRepository
+    public class RestSharpCustomerDocumentRepository : ICustomerDocumentRepository
     {
         #region REST Helper Methods
 
@@ -55,11 +56,9 @@ namespace Abc.Crm.WindowsClient.Services
 
         #region Consts
 
-        private const string VaultId = "e2bebb8e-9adf-4fda-8897-72a095a942f0";
+        private Guid NoTagDefId = new Guid("ead13e9b-20af-47f0-96b2-89c2704b4467");
 
-        private Guid NoTagDefId = new System.Guid("ead13e9b-20af-47f0-96b2-89c2704b4467");
-
-        private Guid DateTagDefId = new System.Guid("57710b3c-4661-4bea-a81a-7e4c485146ad");
+        private Guid DateTagDefId = new Guid("57710b3c-4661-4bea-a81a-7e4c485146ad");
 
         #endregion
 
@@ -68,8 +67,6 @@ namespace Abc.Crm.WindowsClient.Services
         public IEnumerable<CustomerDocument> GetAll()
         {
             var documents = GetSearchResults();
-
-            var client = GetAuthenticatedRestClient();
 
             foreach (var document in documents?.Take(5))
             {
