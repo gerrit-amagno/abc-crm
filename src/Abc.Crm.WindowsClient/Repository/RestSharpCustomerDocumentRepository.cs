@@ -28,50 +28,30 @@ namespace Abc.Crm.WindowsClient.Repository
 
         private string GetToken()
         {
-            var client = new RestClient("http://localhost/amagnome/api/v2/token");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddParameter("userName", "ged@amagno.de");
-            request.AddParameter("password", "hannes");
-            IRestResponse response = client.Execute(request);
+            throw new NotImplementedException();
 
-            return response.Content.Trim(trimChar: '"');
+            // return response.Content.Trim(trimChar: '"');
         }
 
         private string GetSearchLocation(string token)
         {
-            var client = new RestClient("http://localhost/amagnome/api/v2/documents/advanced-search");
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Authorization", $"Bearer {token}");
-            request.AddHeader("Content-Type", "application/json");
-            request.AddParameter("application/json", "{\r\n  \"condition\": {\r\n    "
-                + "\"type\": \"StringEqualsCondition\",\r\n    \"Value\" : \"1030\",\r\n    "
-                + "\"TagDefinitionIds\" : [ \"d4bcf9a0-5f0d-eb11-a7a2-70bc1078686b\" ]\r\n  },\r\n  "
-                + "\"vaultIds\": [\r\n    \"4d2ca91d-5d0d-eb11-a7a2-70bc1078686b\"\r\n  ]\r\n}",  
-                ParameterType.RequestBody);
-            var response = client.Execute(request);
+            throw new NotImplementedException();
 
-            return GetLocation(response);
+            // return GetLocation(response);
         }
 
         private List<CustomerDocument> GetSearchResults(string token, string location)
         {
-            var client = new RestClient($"http://localhost/amagnome/api/v2/{location}/results");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", $"Bearer {token}");
+            throw new NotImplementedException();
 
-            return client.Execute<List<CustomerDocument>>(request).Data;
+            // return client.Execute<List<CustomerDocument>>(request).Data;
         }
 
         private byte[] GetPreview(string token, Guid documentId)
         {
-            var client = new RestClient($"http://localhost/amagnome/api/v2/documents/{documentId}/preview?page=1&size=Large");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("Authorization", $"Bearer {token}");
-            var response = client.Execute(request);
+            throw new NotImplementedException();
 
-            return response.RawBytes;
+            // return response.RawBytes;
         }
 
 
