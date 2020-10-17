@@ -7,9 +7,9 @@ namespace Abc.Crm.WindowsClient.Models
     {
         public Guid Id { get; set; }
 
-        public string No { get; set; }
+        public string DocumentNumber { get; set; }
 
-        public string Date { get; set; }
+        public string ChangeDate { get; set; }
 
         public string Name { get; set; }
 

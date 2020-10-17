@@ -49,13 +49,13 @@ namespace Abc.Crm.WindowsClient.ViewModel
         {
             SelectedCustomer = new Customer
             {
-                Address = "Citykai 12",
+                Address = "Küstenstraße 15",
                 Country = "Deutschland",
-                City = "Hamburg",
-                Name = "Clean Power AG",
-                Number = "SLKD1003",
-                Postcode = "20457",
-                Logo = File.ReadAllBytes(@"images\cleanpower-logo.png")
+                City = "Wilhelmshaven",
+                Name = "Windpark Borkum GmbH",
+                Number = "1030",
+                Postcode = "26382",
+                Logo = File.ReadAllBytes(@"images\windpark-logo.png")
             };
 
             DocumentList = new ObservableCollection<CustomerDocument>(_documentRepository.GetAll());

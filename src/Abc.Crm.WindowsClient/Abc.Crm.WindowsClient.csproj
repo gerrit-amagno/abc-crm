@@ -22,8 +22,9 @@
       <EmbeddedResource Include="images\rechnung.pdf.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </EmbeddedResource>
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\AmagnoWebApi.Client\src\AmagnoWebApi.Client\AmagnoWebApi.Client.csproj" />
+      <None Remove="images\windpark-logo.png" />
+      <EmbeddedResource Include="images\windpark-logo.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 </Project>

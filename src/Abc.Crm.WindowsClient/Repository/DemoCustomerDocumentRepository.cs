@@ -19,8 +19,8 @@ namespace Abc.Crm.WindowsClient.Repository
                     Id = Guid.NewGuid(),
                     Name = "rechnung.pdf",
                     CreateDate = "14.10.2020",
-                    Date = "13.10.2020",
-                    No = "R983247",
+                    ChangeDate = "13.10.2020",
+                    DocumentNumber = "R983247",
                     Preview = File.ReadAllBytes("images\\rechnung.pdf.png")
                 },
                 new CustomerDocument
@@ -28,8 +28,8 @@ namespace Abc.Crm.WindowsClient.Repository
                     Id = Guid.NewGuid(),
                     Name = "lieferschein.pdf",
                     CreateDate = "20.10.2020",
-                    Date = "19.10.2020",
-                    No = "L304802",
+                    ChangeDate = "19.10.2020",
+                    DocumentNumber = "L304802",
                     Preview = File.ReadAllBytes("images\\lieferschein.pdf.png")
                 }
             });
