@@ -26,6 +26,7 @@ namespace Abc.Crm.WindowsClient.ViewModel
         private CustomerDocument _selectedDocument;
         private ObservableCollection<CustomerDocument> _documentList;
         private readonly ICustomerDocumentRepository _documentRepository;
+
         public string Title => $"Kunde - {SelectedCustomer.Name} ({SelectedCustomer.Number})";
 
         public Customer SelectedCustomer { get => _selectedCustomer; set => Set(ref _selectedCustomer, value); }
@@ -58,6 +59,8 @@ namespace Abc.Crm.WindowsClient.ViewModel
             };
 
             DocumentList = new ObservableCollection<CustomerDocument>(_documentRepository.GetAll());
+
+            SelectedDocument = DocumentList.First();
         }
     }
 }

@@ -20,7 +20,6 @@ namespace Abc.Crm.WindowsClient.Properties {
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -35,7 +34,6 @@ namespace Abc.Crm.WindowsClient.Properties {
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
-
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -59,15 +57,6 @@ namespace Abc.Crm.WindowsClient.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cleanpower_logo {
-            get {
-                object obj = ResourceManager.GetObject("cleanpower_logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
