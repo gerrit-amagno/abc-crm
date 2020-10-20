@@ -31,6 +31,7 @@ namespace Abc.Crm.WindowsClient.Service
         public ViewModelLocator()
         {
             SimpleIoc.Default.Register<ICustomerDocumentRepository, DemoCustomerDocumentRepository>();
+            //SimpleIoc.Default.Register<ICustomerDocumentRepository, RestSharpCustomerDocumentRepository>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 

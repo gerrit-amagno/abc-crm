@@ -1,5 +1,4 @@
 ﻿using System;
-using RestSharp.Deserializers;
 
 namespace Abc.Crm.WindowsClient.Models
 {
