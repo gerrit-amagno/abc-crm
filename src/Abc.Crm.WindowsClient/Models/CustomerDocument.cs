@@ -1,5 +1,4 @@
 ﻿using System;
-using RestSharp.Deserializers;
 
 namespace Abc.Crm.WindowsClient.Models
 {
@@ -7,14 +6,13 @@ namespace Abc.Crm.WindowsClient.Models
     {
         public Guid Id { get; set; }
 
-        public string No { get; set; }
+        public string DocumentNumber { get; set; }
 
-        public string Date { get; set; }
+        public string ChangeDate { get; set; }
 
         public string Name { get; set; }
 
-        [DeserializeAs(Name = "CreateDate" )]
-        public string Created { get; set; }
+        public string CreateDate { get; set; }
 
         public byte[] Preview { get; set; }
 

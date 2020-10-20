@@ -1,4 +1,7 @@
-﻿namespace Abc.Crm.WindowsClient
+﻿using System.Windows;
+using System.Windows.Input;
+
+namespace Abc.Crm.WindowsClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

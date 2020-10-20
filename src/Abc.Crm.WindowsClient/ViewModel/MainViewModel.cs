@@ -1,142 +1,63 @@
-using System.Collections.ObjectModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Windows;
-using Abc.Crm.WindowsClient.Interfaces;
 using Abc.Crm.WindowsClient.Models;
-using Abc.Crm.WindowsClient.Properties;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using JetBrains.Annotations;
-using Microsoft.Win32;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
+using Abc.Crm.WindowsClient.Interface;
+using Abc.Crm.WindowsClient.Properties;
 
 namespace Abc.Crm.WindowsClient.ViewModel
 {
-    [UsedImplicitly]
+    /// <summary>
+    /// This class contains properties that the main View can data bind to.
+    /// <para>
+    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    /// </para>
+    /// <para>
+    /// You can also use Blend to data bind with the tool's support.
+    /// </para>
+    /// <para>
+    /// See http://www.galasoft.ch/mvvm
+    /// </para>
+    /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        [NotNull]
-        private readonly IDocumentRepository _documentRepository;
-
-        private string _uploadFileName;
-
         private Customer _selectedCustomer;
-
-        private Document _selectedDocument;
-
-        private Vault _selectedVault;
-
-        private ObservableCollection<Document> _documentList;
-
-        private ObservableCollection<Vault> _vaultList;
-
+        private CustomerDocument _selectedDocument;
+        private ObservableCollection<CustomerDocument> _documentList;
+        private readonly ICustomerDocumentRepository _documentRepository;
         public string Title => $"Kunde - {SelectedCustomer.Name} ({SelectedCustomer.Number})";
 
         public Customer SelectedCustomer { get => _selectedCustomer; set => Set(ref _selectedCustomer, value); }
 
-        public ObservableCollection<Document> DocumentList { get => _documentList; set => Set(ref _documentList, value); }
+        public ObservableCollection<CustomerDocument> DocumentList { get => _documentList; set => Set(ref _documentList, value); }
 
-        public Document SelectedDocument { get => _selectedDocument; set => Set(ref _selectedDocument, value); }
+        public CustomerDocument SelectedDocument { get => _selectedDocument; set => Set(ref _selectedDocument, value); }
 
-        public ObservableCollection<Vault> VaultList { get => _vaultList; set => Set(ref _vaultList, value); }
-
-        public Vault SelectedVault { get => _selectedVault; set => Set(ref _selectedVault, value); }
-
-        public string UploadFileName { get => _uploadFileName;set => Set(ref _uploadFileName, value); }
-    
-        public RelayCommand UploadCommand { get; }
-
-        public RelayCommand BrowseCommand { get; }
-
-        public RelayCommand SearchCommand { get;  }
-        
-        public MainViewModel(
-            [NotNull] IDocumentRepository documentRepository,
-            [NotNull] IVaultRepository vaultRepository,
-            [NotNull] IAuthenticator authenticator,
-            [NotNull] IAuthToken authToken)
+        /// <summary>
+        /// Initializes a new instance of the MainViewModel class.
+        /// </summary>
+        public MainViewModel(ICustomerDocumentRepository documentRepository)
         {
             _documentRepository = documentRepository;
 
-            var auth = authenticator.Login();
+            Init();
+        }
 
-            if (!auth || authToken.Token == null)
-            {
-                MessageBox.Show("Login", "Login failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            SearchCommand = new RelayCommand(ExecuteSearch);
-            UploadCommand = new RelayCommand(ExecuteUpload);
-            BrowseCommand = new RelayCommand(ExecuteBrowse);
-
-            VaultList = new ObservableCollection<Vault>(vaultRepository.GetAll());
-            if (VaultList.Any())
-            {
-                SelectedVault = VaultList.First();
-            }
-
+        private void Init()
+        {
             SelectedCustomer = new Customer
             {
-                Address = "Citykai 12",
+                Address = "Küstenstraße 15",
                 Country = "Deutschland",
-                City = "Hamburg",
-                Name = "Clean Power AG",
-                Number = "SLKD1003",
-                Postcode = "20457",
-                Logo = ImageToByte2(Resources.cleanpower_logo)
+                City = "Wilhelmshaven",
+                Name = "Windpark Borkum GmbH",
+                Number = "1030",
+                Postcode = "26382",
+                Logo = File.ReadAllBytes(@"images\windpark-logo.png")
             };
-        }
 
-        private void ExecuteBrowse()
-        {
-            var openFileDialog = new OpenFileDialog();
-
-            var result = openFileDialog.ShowDialog();
-
-            if (result != null && result.Value)
-            {
-                UploadFileName = openFileDialog.FileName;
-            }
-        }
-
-        private void ExecuteUpload()
-        {
-            if (SelectedVault == null)
-            {
-                MessageBox.Show("Select a vault!");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(UploadFileName))
-                return;
-
-            _documentRepository.Set(_selectedVault.Id, UploadFileName);
-        }
-
-        private void ExecuteSearch()
-        {
-            if (SelectedVault == null)
-            {
-                MessageBox.Show("Select a vault!");
-                return;
-            }
-
-            DocumentList = new ObservableCollection<Document>(_documentRepository.GetAll(SelectedCustomer.Number, SelectedVault.Id));
-            if (DocumentList.Any())
-            {
-                SelectedDocument = DocumentList.First();
-            }
-        }
-
-        private static byte[] ImageToByte2(Image img)
-        {
-            using (var stream = new MemoryStream())
-            {
-                img.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                return stream.ToArray();
-            }
+            DocumentList = new ObservableCollection<CustomerDocument>(_documentRepository.GetAll());
         }
     }
 }
