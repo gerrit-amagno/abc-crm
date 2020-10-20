@@ -1,5 +1,6 @@
 # abc-crm
 ![.NET Core](https://github.com/gerrit-amagno/abc-crm/workflows/.NET%20Core/badge.svg)
+
 This is an AMAGNO Web API example project with .NET Core and RestSharp
 
 ![CRM Screen](screen.png)
