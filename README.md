@@ -1,5 +1,5 @@
 # abc-crm
-This is an AMAGNO API example project
+This is an AMAGNO Web API example project with .NET Core and RestSharp
 
 ![CRM Screen](screen.png)
 
